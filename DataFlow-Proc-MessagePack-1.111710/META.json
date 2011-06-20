@@ -1,0 +1,51 @@
+{
+   "abstract" : "A MessagePack converting processor",
+   "author" : [
+      "Alexei Znamensky <russoz@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110930",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "DataFlow-Proc-MessagePack",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.30"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Data::MessagePack" : 0,
+            "DataFlow::Proc::Converter" : 0,
+            "Moose" : 0,
+            "namespace::autoclean" : 0
+         }
+      },
+      "test" : {
+         "requires" : {
+            "English" : 0,
+            "File::Find" : 0,
+            "File::Temp" : 0,
+            "Test::More" : "0.88",
+            "perl" : "5.006"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {},
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/russoz/XXXXXX.git",
+         "web" : "http://github.com/russoz/XXXXXX"
+      }
+   },
+   "version" : "1.111710"
+}
+
