@@ -13,11 +13,9 @@ extends 'DataFlow::Proc::Converter';
 use namespace::autoclean;
 use Data::MessagePack;
 
-has '+policy' => (
-    'default' => sub {
-        return shift->direction eq 'CONVERT_TO' ? 'ArrayRef' : 'Scalar';
-    },
-);
+sub _policy {
+    return shift->direction eq 'CONVERT_TO' ? 'ArrayRef' : 'Scalar';
+}
 
 has '+converter' => (
     lazy    => 1,
@@ -37,24 +35,20 @@ has '+converter' => (
 
 has '+converter_opts' => ( 'init_arg' => 'msgpack_opts', );
 
-has '+converter_subs' => (
-    'lazy'    => 1,
-    'default' => sub {
-        my $self = shift;
+sub _build_subs {
+    my $self = shift;
 
-        my $subs = {
-            'TO_MSGPACK' => sub {
-                return $self->msgpack->pack($_);
-            },
-            'FROM_MSGPACK' => sub {
-                return $self->msgpack->unpack($_);
-            },
-        };
+    my $subs = {
+        'TO_MSGPACK' => sub {
+            return $self->msgpack->pack($_);
+        },
+        'FROM_MSGPACK' => sub {
+            return $self->msgpack->unpack($_);
+        },
+    };
 
-        return $subs;
-    },
-    'init_arg' => undef,
-);
+    return $subs;
+}
 
 __PACKAGE__->meta->make_immutable;
 
